@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue - sort</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
+    <style>
+        .table th.click {
+            cursor: pointer;
+        }
+
+        .table th.click {
+            cursor: pointer;
+        }
+
+        .icon {
+            display: inline-block;
+        }
+
+        .icon.inverse {
+            transform: rotate(180deg)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container mt-5">
+        <table class="table">
+            <thead>
+                <tr class="table-info">
+                    <th>品名</th>
+                    <th class="click" @click="priceClick">價格
+                        <!-- isReverse 為反轉 className -->
+                        <span class="icon" :class="{ 'inverse' : isReverse }">
+                            <i v-if="sortActive == 'price'" class=" fas fa-angle-up text-success"></i>
+                        </span>
+                    </th>
+                    <th class="click" @click="dateClick">到期日
+                        <span class="icon" :class="{ 'inverse' : isReverse }">
+                            <i v-if="sortActive == 'date'" class=" fas fa-angle-up text-success"></i>
+                        </span>
+                    </th>
+                </tr>
+                <tr v-for="item in sortArr" :key="item.name">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.expiryDate }}</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
